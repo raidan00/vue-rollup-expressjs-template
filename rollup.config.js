@@ -20,7 +20,9 @@ export default {
 		css({ output: 'bundle.css' }),
 		nodeResolve(),
 		replace({
-			'process.env.NODE_ENV': JSON.stringify('production'),
+			'process.env.NODE_ENV': production ? JSON.stringify('production') : JSON.stringify('dev'),
+			__VUE_OPTIONS_API__: false,
+			__VUE_PROD_DEVTOOLS__: false,
 			'preventAssignment': true
 		}),
 		!production && livereload('public'),
